@@ -1,0 +1,6 @@
+flask
+flask_sqlalchemy
+pyjwt
+pyarrow
+pandas
+flask-jwt-extended
