@@ -7,10 +7,10 @@ from utils import sum_sales_by_column
 
 logging.basicConfig(level=logging.INFO)
 
-sales_bp = Blueprint('sales_bp', __name__)
+sales_period_bp = Blueprint('sales_period_bp', __name__)
 
 
-@sales_bp.route('/period_employee', methods=['GET'])
+@sales_period_bp.route('/employee', methods=['GET'])
 @jwt_required()
 def period_employee():
     """
@@ -36,7 +36,7 @@ def period_employee():
     })
 
 
-@sales_bp.route('/period_product', methods=['GET'])
+@sales_period_bp.route('/product', methods=['GET'])
 @jwt_required()
 def period_product():
     """
@@ -62,7 +62,7 @@ def period_product():
     })
 
 
-@sales_bp.route('/period_store', methods=['GET'])
+@sales_period_bp.route('/store', methods=['GET'])
 @jwt_required()
 def period_store():
     """
