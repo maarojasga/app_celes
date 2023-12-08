@@ -46,3 +46,25 @@ def sum_sales_by_column(key_column, key_value, start_date, end_date):
         logging.error(f"Error calculating sales: {e}")
         return 0
 
+
+def sum_and_average_sales_by_column(key_column, key_value):
+    """
+    Calculates the total sum and average of sales based on a specified key column (Employee, Product, Store)
+    without considering a date range.
+    """
+    df = read_data()
+    if df.empty:
+        logging.warning("Dataframe is empty. No data to process.")
+        return 0, 0
+
+    try:
+        mask = (df[key_column] == key_value)
+        total = df.loc[mask, 'Amount'].sum()
+        average = df.loc[mask, 'Amount'].mean() if not df.loc[mask, 'Amount'].empty else 0
+        logging.info(f"Total and average sales calculated for {key_column}: {key_value}, Total: {total}, Average: {average}")
+        return total, average
+    except Exception as e:
+        logging.error(f"Error calculating sales: {e}")
+        return 0, 0
+
+

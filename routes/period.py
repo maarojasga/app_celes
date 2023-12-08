@@ -29,10 +29,10 @@ def period_employee():
     total_sum = sum_sales_by_column(column, key_employee, start_date, end_date)
 
     return jsonify({
-        'Key_Employee': key_employee,
-        'Start_Date': start_date,
-        'End_Date': end_date,
-        'Total_Sales': total_sum
+        'Key_employee': key_employee,
+        'Start_date': start_date,
+        'End_date': end_date,
+        'Total_sales': total_sum
     })
 
 
@@ -55,10 +55,10 @@ def period_product():
     total_sum = sum_sales_by_column(column, key_product, start_date, end_date)
 
     return jsonify({
-        'Key_Product': key_product,
-        'Start_Date': start_date,
-        'End_Date': end_date,
-        'Total_Sales': total_sum
+        'Key_product': key_product,
+        'Start_date': start_date,
+        'End_date': end_date,
+        'Total_sales': total_sum
     })
 
 
@@ -81,8 +81,8 @@ def period_store():
     total_sum = sum_sales_by_column(column, key_store, start_date, end_date)
 
     return jsonify({
-        'KeyStore': key_store,
-        'Start_Date': start_date,
-        'End_Date': end_date,
-        'Total_Sales': total_sum
+        'Key_store': key_store,
+        'Start_sate': start_date,
+        'End_sate': end_date,
+        'Total_sales': total_sum
     })

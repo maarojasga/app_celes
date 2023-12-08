@@ -5,7 +5,7 @@ from flask import Blueprint, request, jsonify, make_response
 from flask_jwt_extended import create_access_token
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from models import db, User
+from auth.models import db, User
 
 logging.basicConfig(level=logging.INFO)
 
@@ -20,6 +20,12 @@ def register():
     Hashes the password, and saves the new user to the database.
     """
     data = request.get_json()
+
+    existing_user = User.query.filter_by(username=data['username']).first()
+    if existing_user:
+        logging.warning(f"Registration attempt with existing username: {data['username']}")
+        return jsonify({'message': 'Username already exists'}), 400
+
     hashed_password = generate_password_hash(data['password'], method='pbkdf2:sha256')
 
     new_user = User(username=data['username'], password=hashed_password)
