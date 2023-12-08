@@ -20,6 +20,7 @@ jwt = JWTManager(app)
 
 @jwt.invalid_token_loader
 def invalid_token_callback(error):
+    """ Response invalid token """
     logging.error(f"Invalid JWT token: {error}")
     return jsonify({'message': 'Invalid token.'}), 401
 

@@ -4,3 +4,4 @@ pyjwt
 pyarrow
 pandas
 flask-jwt-extended
+pylint
