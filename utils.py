@@ -3,11 +3,8 @@ import os
 from datetime import datetime
 
 import pandas as pd
-from flask import Blueprint
 
 logging.basicConfig(level=logging.INFO)
-
-sales_bp = Blueprint('sales_bp', __name__)
 
 DATA_FILE = os.getenv('DATA_FILE')
 
@@ -61,10 +58,9 @@ def sum_and_average_sales_by_column(key_column, key_value):
         mask = (df[key_column] == key_value)
         total = df.loc[mask, 'Amount'].sum()
         average = df.loc[mask, 'Amount'].mean() if not df.loc[mask, 'Amount'].empty else 0
-        logging.info(f"Total and average sales calculated for {key_column}: {key_value}, Total: {total}, Average: {average}")
+        logging.info(
+            f"Total and average sales calculated for {key_column}: {key_value}, Total: {total}, Average: {average}")
         return total, average
     except Exception as e:
         logging.error(f"Error calculating sales: {e}")
         return 0, 0
-
-
